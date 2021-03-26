@@ -11,13 +11,13 @@ namespace Backend.Models
     {
 
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        public string taskName { get; set; }
+        public string TaskName { get; set; }
         [Column(TypeName = "nvarchar(100)")]
-        public string description { get; set; }
-        public int status { get; set; }
+        public string Description { get; set; }
+        public int Status { get; set; }
        
 
     }

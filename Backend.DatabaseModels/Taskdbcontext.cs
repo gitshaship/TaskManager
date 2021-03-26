@@ -15,6 +15,6 @@ namespace Backend.Models
 
         }
 
-        public DbSet<DBtask> tasks{ get; set; }
+        public DbSet<DBtask> Tasks{ get; set; }
     }
 }

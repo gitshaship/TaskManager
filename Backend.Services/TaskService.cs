@@ -32,21 +32,21 @@ namespace Backend.Services
         public async Task<IEnumerable<DBtask>> GetTasks(int? status) {
             if (status.HasValue && status == 1)
             {
-                return await _context.tasks.Where(x => x.status == 1).ToListAsync();
+                return await _context.Tasks.Where(x => x.Status == 1).ToListAsync();
             }
             else if (status == 0)
             {
-                return await _context.tasks.Where(x => x.status == 0).ToListAsync();
+                return await _context.Tasks.Where(x => x.Status == 0).ToListAsync();
             }
             else
             {
-                return await _context.tasks.ToListAsync();
+                return await _context.Tasks.ToListAsync();
             }
         }
 
         public async Task<DBtask> UpdateTask(int id, DBtask dBtask)
         {
-            dBtask.id = id;
+            dBtask.Id = id;
             _context.Entry(dBtask).State = EntityState.Modified;
 
             try
@@ -67,31 +67,31 @@ namespace Backend.Services
         public async Task<DBtask> DeleteTask(int id)
         {
             var task = await GetTask(id);
-            _context.tasks.Remove(task);
+            _context.Tasks.Remove(task);
             await _context.SaveChangesAsync();
             return task;
         }
 
         public async Task<DBtask> PostTask(DBtask task)
         {
-            _context.tasks.Add(task);
+            _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
             return task;
         }
 
         private bool DBtaskExists(int id)
         {
-            return _context.tasks.Any(e => e.id == id);
+            return _context.Tasks.Any(e => e.Id == id);
         }
 
         public bool taskExistsByName(string name)
         {
-            return _context.tasks.Any(e => e.taskName.Equals(name));
+            return _context.Tasks.Any(e => e.TaskName.Equals(name));
         }
 
         public async Task<DBtask> GetTask(int id)
         {
-           return  await _context.tasks.FindAsync(id);
+           return  await _context.Tasks.FindAsync(id);
         }
 
 

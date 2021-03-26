@@ -37,7 +37,7 @@ namespace Backend.Controllers
         public async Task<IActionResult> PutDBtask(int id, DBtask dBtask)
         {
             
-            var result = await _taskService.UpdateTask(id, dBtask);
+            var Result = await _taskService.UpdateTask(id, dBtask);
             return NoContent();
         }
 
@@ -46,12 +46,12 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<DBtask>> PostDBtask(DBtask dBtask)
         {
-            if (_taskService.taskExistsByName(dBtask.taskName))
+            if (_taskService.taskExistsByName(dBtask.TaskName))
             {
                 return BadRequest();
             }
             var task = await _taskService.PostTask(dBtask);
-            return CreatedAtAction("GetDBtask", new { id = dBtask.id }, task);
+            return CreatedAtAction("GetDBtask", new { id = dBtask.Id }, task);
         }
 
         // DELETE: api/tasks/5
