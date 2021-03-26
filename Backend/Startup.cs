@@ -30,7 +30,7 @@ namespace Backend
         {
             services.AddControllers();
             services.AddDbContext<Taskdbcontext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnection"), b => b.MigrationsAssembly("Backend")));            
             services.AddTransient<ITaskService, TaskService>();
         }
 

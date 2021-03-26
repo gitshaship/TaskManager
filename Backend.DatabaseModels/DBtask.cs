@@ -18,7 +18,7 @@ namespace Backend.Models
         [Column(TypeName = "nvarchar(100)")]
         public string description { get; set; }
         public int status { get; set; }
-        public int MyProperty { get; set; }
+       
 
     }
 }
